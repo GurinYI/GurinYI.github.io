@@ -86,10 +86,10 @@
             </div>
           </div>
 
-          <div data-bind="if: m_.currentDirections.includes('F'),">
+          <div data-bind="if: (m_.currentDirections.includes('F') || m_.win),">
             <div
               class="maze-zone__arrow-block forward"
-              data-bind="  click:m_.arrowClick.bind($data,'F'),"
+              data-bind="click:m_.arrowClick.bind($data,'F'), css:{'win':m_.win}"
             >
               <svg
                 class="forward__arrow"
@@ -98,13 +98,14 @@
                 height="12"
                 viewBox="0 0 20 12"
                 fill="none"
+                data-bind="if:!m_.win"
               >
                 <path
                   d="M-4.37114e-07 10L10 -4.37114e-07L20 10L18.225 11.775L10 3.55L1.775 11.775L-4.37114e-07 10Z"
                   fill="#FFC700"
                 />
               </svg>
-              <span class="maze-zone__arrow-title" data-bind="text: m_.currentPoint.options.find(point => point.direction === 'F') ? m_.currentPoint.options.find(point => point.direction === 'F').text : ''">
+              <span class="maze-zone__arrow-title" data-bind="text: (m_.currentPoint.options.find(point => point.direction === 'F') || m_.win) ? (m_.win ? 'Вы прошли лабиринт, поздравляем с победой!' :m_.currentPoint.options.find(point => point.direction === 'F').text) : ''">
               </span>
             </div>
           </div>
