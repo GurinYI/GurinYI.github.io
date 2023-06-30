@@ -152,6 +152,11 @@ h3 {
   box-sizing: border-box;
   cursor: pointer;
 }
+.maze-zone__arrow-block.win{
+  background-color: #F48A2C;
+  color: #FFFFFF;
+  cursor: default;
+}
 .maze-zone__arrow-block.forward{
   top: 0%;
   left:50%;
@@ -173,6 +178,9 @@ h3 {
   transform: translate(-50%, -50%);
   background: #39A1ED;
   color: #FFFFFF;
+}
+.win .maze-zone__arrow-title{
+  text-align: center;
 }
 .maze-zone__arrow-title{
   width: 80%;
