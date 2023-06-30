@@ -254,10 +254,6 @@ h3 {
   width: 14%;
 }
 
-.win {
-  color: green;
-}
-
 .line {
   opacity: 0.2;
   z-index: -5;
