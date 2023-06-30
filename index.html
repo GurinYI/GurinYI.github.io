@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html manifest1="app.appcache" onselectstart="return false">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content=" width=device-width initial-scale=1 maximum-scale=1 user-scalable=0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="lib/jquery-2.1.3.min.js"></script>
+    <script src="lib/knockoutjs/knockout-3.5.1.js"></script>
+    <script src="lib/knockoutjs/knockout-es5.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/m_.js"></script>
+    <script>
+      window.parent.addEventListener("message", receiveMessage, false);
+      function receiveMessage(event) {
+        if (
+          typeof event.data === "string" &&
+          event.data.includes("from parent")
+        ) {
+          console.log(event);
+          m_.currentStage = event.data.replace("from parent ", "");
+        }
+      }
+    </script>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="game-container">
+      <section class="game-info">
+        <a class="back-button" href="#">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z"
+              fill="currentColor"
+            />
+          </svg>
+          К выбору этапа</a
+        >
+        <h3 class="game-info__game-name">Лабиринт</h3>
+        <h2 class="game-info__task-name">3. Антидемпинговые меры</h2>
+        <span class="game-info__task-description">
+          Вы стоите у развилки двух дорог, вам известно что одна дорога ведет к
+          племени людоедов, а другая, к племени праведников, еще вам известно,
+          что людоеды всегда врут, а праведники всегда говорят правду. Какой
+          один единственный вопрос вам задать первому встречному у развилки этих
+          двух дорог, чтобы не попасть на обед к людоедам?
+        </span>
+      </section>
+      <section class="maze-zone">
+        <div class="maze-container">
+
+          <img
+            class="maze-container__fork current"
+            id="prevForkSrc"
+            data-bind="style:{'background-image':m_.currentForkSrc}"
+          />
+          <div data-bind="if: m_.currentDirections.includes('L')">
+            <div
+              class="maze-zone__arrow-block left"
+              data-bind="click:m_.arrowClick.bind($data,'L')"
+            >
+              <svg
+                class="left__arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="12"
+                viewBox="0 0 20 12"
+                fill="none"
+              >
+                <path
+                  d="M-4.37114e-07 10L10 -4.37114e-07L20 10L18.225 11.775L10 3.55L1.775 11.775L-4.37114e-07 10Z"
+                  fill="#FFC700"
+                />
+              </svg>
+              <span class="maze-zone__arrow-title" data-bind="text: m_.currentPoint.options.find(point => point.direction === 'L') ? m_.currentPoint.options.find(point => point.direction === 'L').text : ''">
+              </span>
+            </div>
+          </div>
+
+          <div data-bind="if: m_.currentDirections.includes('F'),">
+            <div
+              class="maze-zone__arrow-block forward"
+              data-bind="  click:m_.arrowClick.bind($data,'F'),"
+            >
+              <svg
+                class="forward__arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="12"
+                viewBox="0 0 20 12"
+                fill="none"
+              >
+                <path
+                  d="M-4.37114e-07 10L10 -4.37114e-07L20 10L18.225 11.775L10 3.55L1.775 11.775L-4.37114e-07 10Z"
+                  fill="#FFC700"
+                />
+              </svg>
+              <span class="maze-zone__arrow-title" data-bind="text: m_.currentPoint.options.find(point => point.direction === 'F') ? m_.currentPoint.options.find(point => point.direction === 'F').text : ''">
+              </span>
+            </div>
+          </div>
+
+          <div data-bind="if: m_.currentDirections.includes('R')">
+            <div
+              class="maze-zone__arrow-block right"
+              data-bind="click:m_.arrowClick.bind($data,'R')"
+            >
+              <span class="maze-zone__arrow-title" data-bind="text: m_.currentPoint.options.find(point => point.direction === 'R') ? m_.currentPoint.options.find(point => point.direction === 'R').text : ''">
+              </span>
+              <svg
+                class="right__arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="12"
+                viewBox="0 0 20 12"
+                fill="none"
+              >
+                <path
+                  d="M-4.37114e-07 10L10 -4.37114e-07L20 10L18.225 11.775L10 3.55L1.775 11.775L-4.37114e-07 10Z"
+                  fill="#FFC700"
+                />
+              </svg>
+            </div>
+          </div>
+          <div data-bind="if: m_.currentPath.length > 1 && !m_.win">
+            <div
+              class="maze-zone__arrow-block back"
+              data-bind="click:m_.arrowClick.bind($data,'B')"
+            >
+              <svg
+                class="back__arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="12"
+                viewBox="0 0 20 12"
+                fill="none"
+              >
+                <path
+                  d="M-4.37114e-07 10L10 -4.37114e-07L20 10L18.225 11.775L10 3.55L1.775 11.775L-4.37114e-07 10Z"
+                  fill="#ffffff"
+                />
+              </svg>
+              <span
+                class="maze-zone__arrow-title"
+                data-bind="text: 'Вернуться назад'"
+              >
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="user-interface">
+        <div class="timer-container">
+          <div class="timer-label">Прошло времени</div>
+          <div class="timer" data-bind="text:m_.showTime(m_.timerValue)">
+            00:00
+          </div>
+        </div>
+        <span class="user-interface__decisions-title">Принятые решения:</span>
+        <ul
+          class="user-interface__decisions"
+          data-bind="foreach:m_.currentPath.slice(1)"
+        >
+          <li class="user-interface__decision" data-bind="text: text"></li>
+        </ul>
+<!--                <div class="steps-count" data-bind="text:m_.steps"></div>-->
+<!--                <button-->
+<!--                  data-bind="click:m_.restart.bind($data)"-->
+<!--                  class="restart-button"-->
+<!--                >-->
+<!--                  Начать сначала-->
+<!--                </button>-->
+      </section>
+    </div>
+  </body>
+</html>
