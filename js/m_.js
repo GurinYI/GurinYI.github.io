@@ -90,7 +90,7 @@ const m_ = {
         m_.arrowClick("R");
       }
       if (
-        m_.currentPath.length > 1 &&
+        m_.currentPath.length > 2 &&
         (event.key === "ArrowDown" || event.key === "s")
       ) {
         m_.arrowClick("B");
@@ -153,10 +153,12 @@ const m_ = {
       }
     }
   },
+  arrowVisible: true,
   arrowClick: function (direction) {
-    if (m_.win) {
+    if (m_.win || !m_.arrowVisible) {
       return;
     }
+    m_.arrowVisible = false;
     if (direction === "B") {
       m_.currentPath.pop();
       m_.currentPoint = m_.currentPath[m_.currentPath.length - 1];
@@ -169,6 +171,7 @@ const m_ = {
       m_.currentPoint = m_.currentPath[m_.currentPath.length - 1];
       m_.currentDirections = m_.getCurrentDirections(m_.currentPoint);
     }
+    m_.moveCharacter(direction);
 
     if (
       m_.currentPath
@@ -179,6 +182,60 @@ const m_ = {
       m_.setWin();
     }
     m_.getCurrentForkSrc();
+  },
+  moveCharacter: function (direction) {
+    const character = document.getElementById("character");
+    switch (direction) {
+      case "L":
+        m_.moveLeft(character);
+        break;
+      case "F":
+        m_.moveForward(character);
+        break;
+      case "R":
+        m_.moveRight(character);
+        break;
+      case "B":
+        m_.moveBack(character);
+        break;
+    }
+  },
+  moveLeft: function (character) {
+    character.style.top = "50%";
+    character.style.left = "0";
+    // setTimeout((character.style.left = "0"), 1500);
+    setTimeout(() => m_.moveOnStart(character), 3000);
+  },
+  moveForward: function (character) {
+    character.style.top = "0";
+    character.style.left = "50%";
+    setTimeout(() => m_.moveOnStart(character), 3000);
+  },
+  moveRight: function (character) {
+    character.style.top = "50%";
+    character.style.left = "100%";
+    character.style.transform = "translate(-100%,0)";
+    // setTimeout(() => (character.style.left = "100%"), 1500);
+    setTimeout(() => m_.moveOnStart(character), 3000);
+  },
+  moveBack: function (character) {
+    character.style.top = "100%";
+    character.style.left = "50%";
+    character.style.transform = "translate(0,-100%)";
+    setTimeout(() => m_.moveOnStart(character), 3000);
+  },
+  moveOnStart: function (character) {
+    character.style.transition = "none";
+    character.style.top = "100%";
+    character.style.left = "50%";
+    character.style.transform = "translate(0,-100%)";
+    setTimeout(function () {
+      character.style.transition = "all 3s";
+      character.style.top = "50%";
+      character.style.left = "50%";
+      character.style.transform = "translate(0,0)";
+    }, 100);
+    setTimeout(() => (m_.arrowVisible = true), 3000);
   },
   setWin: function () {
     m_.win = true;
