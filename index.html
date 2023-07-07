@@ -57,13 +57,13 @@
       </section>
       <section class="maze-zone">
         <div class="maze-container">
-
+          <div id="character" class="maze-container__character"></div>
           <img
             class="maze-container__fork current"
             id="prevForkSrc"
             data-bind="style:{'background-image':m_.currentForkSrc}"
           />
-          <div data-bind="if: m_.currentDirections.includes('L')">
+          <div data-bind="if: m_.currentDirections.includes('L') && m_.arrowVisible">
             <div
               class="maze-zone__arrow-block left"
               data-bind="click:m_.arrowClick.bind($data,'L')"
@@ -86,7 +86,7 @@
             </div>
           </div>
 
-          <div data-bind="if: (m_.currentDirections.includes('F') || m_.win),">
+          <div data-bind="if: ((m_.currentDirections.includes('F')&& m_.arrowVisible) || (m_.win && m_.arrowVisible)),">
             <div
               class="maze-zone__arrow-block forward"
               data-bind="click:m_.arrowClick.bind($data,'F'), css:{'win':m_.win}"
@@ -110,7 +110,7 @@
             </div>
           </div>
 
-          <div data-bind="if: m_.currentDirections.includes('R')">
+          <div data-bind="if: m_.currentDirections.includes('R')&& m_.arrowVisible">
             <div
               class="maze-zone__arrow-block right"
               data-bind="click:m_.arrowClick.bind($data,'R')"
@@ -132,7 +132,7 @@
               </svg>
             </div>
           </div>
-          <div data-bind="if: m_.currentPath.length > 1 && !m_.win">
+          <div data-bind="if: m_.currentPath.length > 2 && !m_.win && m_.arrowVisible">
             <div
               class="maze-zone__arrow-block back"
               data-bind="click:m_.arrowClick.bind($data,'B')"
