@@ -113,33 +113,28 @@ h3 {
   outline: 1px solid #ffffff;
   outline-offset: 0.3em;
 }
-.maze-container__answers {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.maze-container__answer.L {
-  grid-row: 1/2;
-  grid-column: 1/2;
-}
-.maze-container__answer.F {
-  grid-row: 1/2;
-  grid-column: 2/3;
-}
-.maze-container__answer.R {
-  grid-row: 1/2;
-  grid-column: 3/4;
-}
-
 .maze-container__fork {
   position: absolute;
   width: 100%;
   height: 100%;
-  transition: all 0.6s;
+  transition-property: background-image;
+  transition-delay: 3s;
+  transition-duration: 1.5s;
   background-image: url("img/forks/START.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
-.maze-zone__arrow-block{
+.maze-container__character {
+  transition: all 3s;
+  position: absolute;
+  width: 3em;
+  height: 3em;
+  background-color: #394049;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+}
+.maze-zone__arrow-block {
   display: flex;
   align-items: center;
   gap: 0.75em;
@@ -147,43 +142,43 @@ h3 {
   width: 18em;
   padding: 0.75em;
   box-shadow: 0.75em 0.75em 0 0 #00000059;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 0.75em;
   position: absolute;
   box-sizing: border-box;
   cursor: pointer;
 }
-.maze-zone__arrow-block.win{
-  background-color: #F48A2C;
-  color: #FFFFFF;
+.maze-zone__arrow-block.win {
+  background-color: #f48a2c;
+  color: #ffffff;
   cursor: default;
 }
-.maze-zone__arrow-block.forward{
+.maze-zone__arrow-block.forward {
   top: 0%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
-.maze-zone__arrow-block.left{
+.maze-zone__arrow-block.left {
   top: 50%;
-  left:0%;
+  left: 0%;
   transform: translate(-10%, -50%);
 }
-.maze-zone__arrow-block.right{
+.maze-zone__arrow-block.right {
   top: 50%;
-  left:100%;
+  left: 100%;
   transform: translate(-90%, -50%);
 }
-.maze-zone__arrow-block.back{
+.maze-zone__arrow-block.back {
   top: 100%;
-  left:50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  background: #39A1ED;
-  color: #FFFFFF;
+  background: #39a1ed;
+  color: #ffffff;
 }
-.win .maze-zone__arrow-title{
+.win .maze-zone__arrow-title {
   text-align: center;
 }
-.maze-zone__arrow-title{
+.maze-zone__arrow-title {
   width: 80%;
   font-size: 20px;
   font-weight: 600;
@@ -191,15 +186,15 @@ h3 {
   letter-spacing: 0;
   text-align: left;
 }
-.left__arrow{
+.left__arrow {
   transform: rotate(-90deg);
 }
-.forward__arrow{
+.forward__arrow {
 }
-.right__arrow{
+.right__arrow {
   transform: rotate(90deg);
 }
-.back__arrow{
+.back__arrow {
   transform: rotate(180deg);
 }
 
@@ -289,7 +284,7 @@ h3 {
   font-size: 16px;
   padding: 0.5em 1em;
   border-radius: 1em;
-  outline: 1px solid #FFFFFF;
+  outline: 1px solid #ffffff;
   color: #ffffff;
   margin-top: 1em;
   width: fit-content;
