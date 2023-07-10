@@ -3,7 +3,6 @@ const m_ = {
     m_.setData();
     m_.setOptions();
     m_.setDirections();
-    m_.timerStart();
     ko.track(m_, { deep: true });
     ko.track(m_.points, { deep: true });
     ko.track(m_.currentPoint, { deep: true });
@@ -202,8 +201,12 @@ const m_ = {
     }
   },
   moveLeft: function (character) {
+    const backgroundImage = document.querySelector('.maze-container__fork');
+    backgroundImage.style.transitionDelay = "2.5s"
     character.style.top = "50%";
     character.style.left = "0";
+    character.style.transition = "left 2.5s, top 2.5s, transform 2.5s, background-image 0s";
+    character.style.transitionTimingFunction = "linear"
     m_.currentCharSrc =  `url("img/character/L1.png")`
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/L1.png")`) ? m_.currentCharSrc = `url("img/character/L3.png")` : m_.currentCharSrc = `url("img/character/L1.png")`
@@ -211,10 +214,15 @@ const m_ = {
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 2000);
+    }, 2500);
   },
   moveForward: function (character) {
+    const backgroundImage = document.querySelector('.maze-container__fork');
+    backgroundImage.style.transitionDelay = "2s"
     m_.currentForkSrc === `url("img/forks/START.jpg")` ?  character.style.top = "20%" : character.style.top = "0";
+    if (m_.currentForkSrc === `url("img/forks/START.jpg")`){
+      m_.timerStart();
+    }
     character.style.left = "50%";
     m_.currentCharSrc =  `url("img/character/F1.png")`
     const step = setInterval(function() {
@@ -226,9 +234,14 @@ const m_ = {
     }, 2000);
   },
   moveRight: function (character) {
+    const backgroundImage = document.querySelector('.maze-container__fork');
+    backgroundImage.style.transitionDelay = "2.5s"
     character.style.top = "50%";
     character.style.left = "100%";
     character.style.transform = "translate(-100%,0)";
+    character.style.transition = "left 2.5s, top 2.5s, transform 2.5s, background-image 0s";
+
+    character.style.transitionTimingFunction = "linear"
     m_.currentCharSrc =  `url("img/character/R1.png")`
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/R1.png")`) ? m_.currentCharSrc = `url("img/character/R3.png")` : m_.currentCharSrc = `url("img/character/R1.png")`
@@ -236,9 +249,11 @@ const m_ = {
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 2000);
+    }, 2500);
   },
   moveBack: function (character) {
+    const backgroundImage = document.querySelector('.maze-container__fork');
+    backgroundImage.style.transitionDelay = "2s"
     character.style.top = "100%";
     character.style.left = "50%";
     character.style.transform = "translate(0,-100%)";
@@ -258,7 +273,7 @@ const m_ = {
     character.style.transform = "translate(0,-100%)";
     m_.currentCharSrc =  `url("img/character/F1.png")`
     setTimeout(function () {
-      character.style.transition = "left 2s, top 2s, right 2s, bottom 2s, transform 2s, background-image 0s";
+      character.style.transition = "left 2s, top 2s, transform 2s, background-image 0s";
       character.style.transitionTimingFunction = "linear"
       character.style.top = "50%";
       character.style.left = "50%";
@@ -321,8 +336,6 @@ const m_ = {
     m_.win = false;
     m_.timerValue = 0;
     m_.stopTimer = true;
-    m_.timerStart();
-    m_.stopTimer = false;
     m_.timerStart();
     m_.steps = 0;
 
