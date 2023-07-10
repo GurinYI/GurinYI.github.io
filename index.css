@@ -125,11 +125,11 @@ h3 {
   background-repeat: no-repeat;
 }
 .maze-container__character {
-  transition: all 3s;
+  background-image: url("img/character/F1.png");
+  transition: left 3s, top 3s, right 3s, bottom 3s, transform 3s, background-image 0s;
   position: absolute;
-  width: 3em;
-  height: 3em;
-  background-color: #394049;
+  width: 48px;
+  height: 48px;
   z-index: 10;
   left: 50%;
   top: 50%;
@@ -272,6 +272,19 @@ h3 {
   z-index: -5;
   position: absolute;
 }
+.user-interface__decisions{
+  margin-top: 1em;
+  max-height: 60%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.user-interface__decisions::-webkit-scrollbar {
+  display: none;
+}
+.user-interface__decision:not(:first-child){
+  margin-top: 1em;
+}
 .user-interface__decisions-title {
   font-size: 16px;
   font-weight: 400;
@@ -284,8 +297,7 @@ h3 {
   font-size: 16px;
   padding: 0.5em 1em;
   border-radius: 1em;
-  outline: 1px solid #ffffff;
+  border: 1px solid #ffffff;
   color: #ffffff;
-  margin-top: 1em;
   width: fit-content;
 }
