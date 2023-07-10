@@ -57,12 +57,16 @@
       </section>
       <section class="maze-zone">
         <div class="maze-container">
-          <div id="character" class="maze-container__character"></div>
-          <img
+          <div id="character"
+               class="maze-container__character"
+               data-bind="style:{'background-image':m_.currentCharSrc}"
+          ></div>
+          <div
             class="maze-container__fork current"
             id="prevForkSrc"
             data-bind="style:{'background-image':m_.currentForkSrc}"
-          />
+          >
+          </div>
           <div data-bind="if: m_.currentDirections.includes('L') && m_.arrowVisible">
             <div
               class="maze-zone__arrow-block left"
