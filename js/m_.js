@@ -204,72 +204,82 @@ const m_ = {
   moveLeft: function (character) {
     character.style.top = "50%";
     character.style.left = "0";
-    m_.currentCharSrc =  `url("img/character/L2.png")`
+    character.style.transition = "left 2.5s, top 2.5s, right 2.5s, bottom 2.5s, transform 2s, background-image 0s";
+    character.style.transitionTimingFunction = "linear"
+    m_.currentCharSrc =  `url("img/character/L1.png")`
     const step = setInterval(function() {
-      (m_.currentCharSrc ===  `url("img/character/L2.png")`) ? m_.currentCharSrc = `url("img/character/L3.png")` : m_.currentCharSrc = `url("img/character/L2.png")`
+      (m_.currentCharSrc ===  `url("img/character/L1.png")`) ? m_.currentCharSrc = `url("img/character/L3.png")` : m_.currentCharSrc = `url("img/character/L1.png")`
     }, 150);
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 3000);
+    }, 2000);
   },
   moveForward: function (character) {
     character.style.top = "0";
     character.style.left = "50%";
-    m_.currentCharSrc =  `url("img/character/F2.png")`
+    character.style.transition = "left 2s, top 2s, right 2s, bottom 2s, transform 2s, background-image 0s";
+    character.style.transitionTimingFunction = "linear"
+    m_.currentCharSrc =  `url("img/character/F1.png")`
     const step = setInterval(function() {
-      (m_.currentCharSrc ===  `url("img/character/F2.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F2.png")`
+      (m_.currentCharSrc ===  `url("img/character/F1.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F1.png")`
     }, 150);
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 3000);
+    }, 2000);
   },
   moveRight: function (character) {
     character.style.top = "50%";
     character.style.left = "100%";
     character.style.transform = "translate(-100%,0)";
+    character.style.transition = "left 2.5s, top 2.5s, right 2.5s, bottom 2.5s, transform 2s, background-image 0s";
+    character.style.transitionTimingFunction = "linear"
     m_.currentCharSrc =  `url("img/character/R1.png")`
     const step = setInterval(function() {
-      (m_.currentCharSrc ===  `url("img/character/R2.png")`) ? m_.currentCharSrc = `url("img/character/R3.png")` : m_.currentCharSrc = `url("img/character/R2.png")`
+      (m_.currentCharSrc ===  `url("img/character/R1.png")`) ? m_.currentCharSrc = `url("img/character/R3.png")` : m_.currentCharSrc = `url("img/character/R1.png")`
     }, 150);
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 3000);
+    }, 2000);
   },
   moveBack: function (character) {
     character.style.top = "100%";
     character.style.left = "50%";
     character.style.transform = "translate(0,-100%)";
-    m_.currentCharSrc =  `url("img/character/B2.png")`
+    character.style.transition = "left 2s, top 2s, right 2s, bottom 2s, transform 2s, background-image 0s";
+    character.style.transitionTimingFunction = "linear"
+    m_.currentCharSrc =  `url("img/character/B1.png")`
     const step = setInterval(function() {
-      (m_.currentCharSrc ===  `url("img/character/B2.png")`) ? m_.currentCharSrc = `url("img/character/B3.png")` : m_.currentCharSrc = `url("img/character/B2.png")`
+      (m_.currentCharSrc ===  `url("img/character/B1.png")`) ? m_.currentCharSrc = `url("img/character/B3.png")` : m_.currentCharSrc = `url("img/character/B1.png")`
     }, 150);
     setTimeout(function () {
       m_.moveOnStart(character);
       clearInterval(step)
-    }, 3000);
+    }, 2000);
   },
   moveOnStart: function (character) {
     character.style.transition = "none";
     character.style.top = "100%";
     character.style.left = "50%";
     character.style.transform = "translate(0,-100%)";
-    m_.currentCharSrc =  `url("img/character/F2.png")`
+    m_.currentCharSrc =  `url("img/character/F1.png")`
     setTimeout(function () {
-      character.style.transition = "left 3s, top 3s, right 3s, bottom 3s, transform 3s, background-image 0s";
+      character.style.transition = "left 2s, top 2s, right 2s, bottom 2s, transform 2s, background-image 0s";
+      character.style.transitionTimingFunction = "linear"
       character.style.top = "50%";
       character.style.left = "50%";
       character.style.transform = "translate(0,0)";
     }, 100);
     const step = setInterval(function() {
-      (m_.currentCharSrc ===  `url("img/character/F2.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F2.png")`
+      (m_.currentCharSrc ===  `url("img/character/F1.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F1.png")`
     }, 150);
     setTimeout(function () {
       m_.arrowVisible = true;
+      m_.currentCharSrc = `url("img/character/F2.png")`
       clearInterval(step)
-    }, 3000);
+    }, 2000);
 
   },
   setWin: function () {
