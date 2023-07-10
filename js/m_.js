@@ -47,6 +47,7 @@ const m_ = {
   currentPoint: {},
   currentDirections: [],
   currentForkSrc: `url("img/forks/START.jpg")`,
+  currentCharSrc: `url("img/character/F1.png")`,
   win: false,
   setData: function () {
     for (let i = 0; i < m_.paths.length; i++) {
@@ -203,39 +204,73 @@ const m_ = {
   moveLeft: function (character) {
     character.style.top = "50%";
     character.style.left = "0";
-    // setTimeout((character.style.left = "0"), 1500);
-    setTimeout(() => m_.moveOnStart(character), 3000);
+    m_.currentCharSrc =  `url("img/character/L2.png")`
+    const step = setInterval(function() {
+      (m_.currentCharSrc ===  `url("img/character/L2.png")`) ? m_.currentCharSrc = `url("img/character/L3.png")` : m_.currentCharSrc = `url("img/character/L2.png")`
+    }, 150);
+    setTimeout(function () {
+      m_.moveOnStart(character);
+      clearInterval(step)
+    }, 3000);
   },
   moveForward: function (character) {
     character.style.top = "0";
     character.style.left = "50%";
-    setTimeout(() => m_.moveOnStart(character), 3000);
+    m_.currentCharSrc =  `url("img/character/F2.png")`
+    const step = setInterval(function() {
+      (m_.currentCharSrc ===  `url("img/character/F2.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F2.png")`
+    }, 150);
+    setTimeout(function () {
+      m_.moveOnStart(character);
+      clearInterval(step)
+    }, 3000);
   },
   moveRight: function (character) {
     character.style.top = "50%";
     character.style.left = "100%";
     character.style.transform = "translate(-100%,0)";
-    // setTimeout(() => (character.style.left = "100%"), 1500);
-    setTimeout(() => m_.moveOnStart(character), 3000);
+    m_.currentCharSrc =  `url("img/character/R1.png")`
+    const step = setInterval(function() {
+      (m_.currentCharSrc ===  `url("img/character/R2.png")`) ? m_.currentCharSrc = `url("img/character/R3.png")` : m_.currentCharSrc = `url("img/character/R2.png")`
+    }, 150);
+    setTimeout(function () {
+      m_.moveOnStart(character);
+      clearInterval(step)
+    }, 3000);
   },
   moveBack: function (character) {
     character.style.top = "100%";
     character.style.left = "50%";
     character.style.transform = "translate(0,-100%)";
-    setTimeout(() => m_.moveOnStart(character), 3000);
+    m_.currentCharSrc =  `url("img/character/B2.png")`
+    const step = setInterval(function() {
+      (m_.currentCharSrc ===  `url("img/character/B2.png")`) ? m_.currentCharSrc = `url("img/character/B3.png")` : m_.currentCharSrc = `url("img/character/B2.png")`
+    }, 150);
+    setTimeout(function () {
+      m_.moveOnStart(character);
+      clearInterval(step)
+    }, 3000);
   },
   moveOnStart: function (character) {
     character.style.transition = "none";
     character.style.top = "100%";
     character.style.left = "50%";
     character.style.transform = "translate(0,-100%)";
+    m_.currentCharSrc =  `url("img/character/F2.png")`
     setTimeout(function () {
-      character.style.transition = "all 3s";
+      character.style.transition = "left 3s, top 3s, right 3s, bottom 3s, transform 3s, background-image 0s";
       character.style.top = "50%";
       character.style.left = "50%";
       character.style.transform = "translate(0,0)";
     }, 100);
-    setTimeout(() => (m_.arrowVisible = true), 3000);
+    const step = setInterval(function() {
+      (m_.currentCharSrc ===  `url("img/character/F2.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F2.png")`
+    }, 150);
+    setTimeout(function () {
+      m_.arrowVisible = true;
+      clearInterval(step)
+    }, 3000);
+
   },
   setWin: function () {
     m_.win = true;
