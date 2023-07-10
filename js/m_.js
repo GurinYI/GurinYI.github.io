@@ -207,6 +207,7 @@ const m_ = {
     character.style.left = "0";
     character.style.transition = "left 2.5s, top 2.5s, transform 2.5s, background-image 0s";
     character.style.transitionTimingFunction = "linear"
+    character.style.transform = "translate(0,-50%)";
     m_.currentCharSrc =  `url("img/character/L1.png")`
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/L1.png")`) ? m_.currentCharSrc = `url("img/character/L3.png")` : m_.currentCharSrc = `url("img/character/L1.png")`
@@ -224,6 +225,7 @@ const m_ = {
       m_.timerStart();
     }
     character.style.left = "50%";
+    character.style.transform = "translate(-50%,0)";
     m_.currentCharSrc =  `url("img/character/F1.png")`
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/F1.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F1.png")`
@@ -238,7 +240,7 @@ const m_ = {
     backgroundImage.style.transitionDelay = "2.5s"
     character.style.top = "50%";
     character.style.left = "100%";
-    character.style.transform = "translate(-100%,0)";
+    character.style.transform = "translate(-100%,-50%)";
     character.style.transition = "left 2.5s, top 2.5s, transform 2.5s, background-image 0s";
 
     character.style.transitionTimingFunction = "linear"
@@ -256,7 +258,7 @@ const m_ = {
     backgroundImage.style.transitionDelay = "2s"
     character.style.top = "100%";
     character.style.left = "50%";
-    character.style.transform = "translate(0,-100%)";
+    character.style.transform = "translate(-50%,-100%)";
     m_.currentCharSrc =  `url("img/character/B1.png")`
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/B1.png")`) ? m_.currentCharSrc = `url("img/character/B3.png")` : m_.currentCharSrc = `url("img/character/B1.png")`
@@ -270,14 +272,14 @@ const m_ = {
     character.style.transition = "none";
     character.style.top = "100%";
     character.style.left = "50%";
-    character.style.transform = "translate(0,-100%)";
+    character.style.transform = "translate(-50%,-50%)";
     m_.currentCharSrc =  `url("img/character/F1.png")`
     setTimeout(function () {
       character.style.transition = "left 2s, top 2s, transform 2s, background-image 0s";
       character.style.transitionTimingFunction = "linear"
       character.style.top = "50%";
       character.style.left = "50%";
-      character.style.transform = "translate(0,0)";
+      character.style.transform = "translate(-50%,-50%)";
     }, 100);
     const step = setInterval(function() {
       (m_.currentCharSrc ===  `url("img/character/F1.png")`) ? m_.currentCharSrc = `url("img/character/F3.png")` : m_.currentCharSrc = `url("img/character/F1.png")`
