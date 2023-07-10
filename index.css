@@ -123,7 +123,7 @@ h3 {
   transition-delay: 2s;
   transition-duration: 1s;
   background-image: url("img/forks/START.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .maze-container__character {
@@ -136,6 +136,7 @@ h3 {
   z-index: 10;
   left: 50%;
   top: 50%;
+  transform:translate(-50%,-50%);
 }
 .maze-zone__arrow-block {
   display: flex;
