@@ -42,7 +42,9 @@ h2,
 h3 {
   margin: 0;
 }
-
+.loader{
+  height: 0;
+}
 .game-container {
   position: relative;
   box-sizing: border-box;
@@ -118,15 +120,16 @@ h3 {
   width: 100%;
   height: 100%;
   transition-property: background-image;
-  transition-delay: 3s;
-  transition-duration: 1.5s;
+  transition-delay: 2s;
+  transition-duration: 1s;
   background-image: url("img/forks/START.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 .maze-container__character {
   background-image: url("img/character/F1.png");
-  transition: left 3s, top 3s, right 3s, bottom 3s, transform 3s, background-image 0s;
+  transition: left 2s, top 2s, right 2s, bottom 2s, transform 2s, background-image 0s;
+  transition-timing-function: linear;
   position: absolute;
   width: 48px;
   height: 48px;
