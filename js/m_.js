@@ -182,6 +182,9 @@ const m_ = {
       m_.setWin();
     }
     m_.getCurrentForkSrc();
+    const decisionsList = document.getElementById('user-decisions')
+    decisionsList.scrollTop = decisionsList.scrollHeight - decisionsList.clientTop;
+
   },
   moveCharacter: function (direction) {
     const character = document.getElementById("character");
