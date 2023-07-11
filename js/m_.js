@@ -290,6 +290,9 @@ const m_ = {
     setTimeout(function () {
       m_.arrowVisible = true;
       m_.currentCharSrc = `url("img/character/F2.png")`
+      if (m_.win){
+        m_.currentCharSrc = `url("img/character/B1.png")`
+      }
       clearInterval(step)
     }, 2000);
 
