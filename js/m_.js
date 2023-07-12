@@ -73,25 +73,25 @@ const m_ = {
       );
       if (
         currentDirections.includes("L") &&
-        (event.key === "ArrowLeft" || event.key === "a")
+        (event.key === "ArrowLeft" || event.key === "a" || event.key === "ф" || event.key === "A" || event.key === "Ф")
       ) {
         m_.arrowClick("L");
       }
       if (
         currentDirections.includes("F") &&
-        (event.key === "ArrowUp" || event.key === "w")
+        (event.key === "ArrowUp" || event.key === "w"|| event.key === "ц" || event.key === "W" || event.key === "Ц")
       ) {
         m_.arrowClick("F");
       }
       if (
         currentDirections.includes("R") &&
-        (event.key === "ArrowRight" || event.key === "d")
+        (event.key === "ArrowRight" || event.key === "d" || event.key === "в" || event.key === "D" || event.key === "В")
       ) {
         m_.arrowClick("R");
       }
       if (
         m_.currentPath.length > 2 &&
-        (event.key === "ArrowDown" || event.key === "s")
+        (event.key === "ArrowDown" || event.key === "s" || event.key === "ы"|| event.key === "S" || event.key === "Ы")
       ) {
         m_.arrowClick("B");
       }
