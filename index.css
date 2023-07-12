@@ -151,6 +151,14 @@ h3 {
   position: absolute;
   box-sizing: border-box;
   cursor: pointer;
+  opacity: 0.93;
+  transition:  top 0.2s, box-shadow 0.2s;
+}
+.maze-zone__arrow-block:hover{
+  opacity: 1;
+}
+.maze-zone__arrow-block:active{
+  box-shadow: 0 0 0 0;
 }
 .maze-zone__arrow-block.win {
   background-color: #f48a2c;
@@ -158,18 +166,28 @@ h3 {
   cursor: default;
 }
 .maze-zone__arrow-block.forward {
-  top: 0%;
+  top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.maze-zone__arrow-block.forward:active {
+  top: 2%;
+}
 .maze-zone__arrow-block.left {
   top: 50%;
-  left: 0%;
+  left: 0;
   transform: translate(-10%, -50%);
+}
+.maze-zone__arrow-block.left:active {
+  top: 52%;
 }
 .maze-zone__arrow-block.right {
   top: 50%;
   left: 100%;
+  transform: translate(-90%, -50%);
+}
+.maze-zone__arrow-block.right:active {
+  top: 52%;
   transform: translate(-90%, -50%);
 }
 .maze-zone__arrow-block.back {
@@ -178,6 +196,9 @@ h3 {
   transform: translate(-50%, -50%);
   background: #39a1ed;
   color: #ffffff;
+}
+.maze-zone__arrow-block.back:active {
+  top: 102%;
 }
 .win .maze-zone__arrow-title {
   text-align: center;
@@ -189,6 +210,13 @@ h3 {
   line-height: 28px;
   letter-spacing: 0;
   text-align: left;
+  max-height: 5em;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.maze-zone__arrow-title::-webkit-scrollbar{
+  display: none;
 }
 .left__arrow {
   transform: rotate(-90deg);
