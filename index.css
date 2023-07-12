@@ -164,6 +164,7 @@ h3 {
   background-color: #f48a2c;
   color: #ffffff;
   cursor: default;
+  opacity: 1;
 }
 .maze-zone__arrow-block.forward {
   top: 0;
