@@ -176,7 +176,7 @@ h3 {
   transform: translate(-50%, -50%);
 }
 .maze-zone__arrow-block.forward:active {
-  top: 2%;
+  top: 0.5%;
 }
 .maze-zone__arrow-block.left {
   top: 50%;
@@ -184,7 +184,7 @@ h3 {
   transform: translate(-10%, -50%);
 }
 .maze-zone__arrow-block.left:active {
-  top: 52%;
+  top: 50.5%;
 }
 .maze-zone__arrow-block.right {
   top: 50%;
@@ -192,7 +192,7 @@ h3 {
   transform: translate(-90%, -50%);
 }
 .maze-zone__arrow-block.right:active {
-  top: 52%;
+  top: 50.5%;
   transform: translate(-90%, -50%);
 }
 .maze-zone__arrow-block.back {
@@ -203,7 +203,7 @@ h3 {
   color: #ffffff;
 }
 .maze-zone__arrow-block.back:active {
-  top: 102%;
+  top: 100.5%;
 }
 .win .maze-zone__arrow-title {
   text-align: center;
